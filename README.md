@@ -1,5 +1,4 @@
 # GradientDescent
-Apply gradient descent manually on linear regression
 Linear Regression is THE most popuar algorhtims in machine learning. 
 It uses Gradient Descent in the back end to find the line of best fit.
 Infact, gradient descent is used by many popular algorithms, for example, logistic regression, neural network, and so on.
