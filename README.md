@@ -7,5 +7,5 @@ When we use sophisticated libraries like scikit learn to implement linear regres
 But as a practitioner of data science, it is important to understand the nuts and bolts of these libraries, in order to utilize them efficiently. 
 
 In this article, I explain how to implement gradient descent on a linear regression problem. 
-Let's dive in. 
+Let's dive right in. 
 
