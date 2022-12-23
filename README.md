@@ -13,19 +13,23 @@ We start by importing the necessary libraries - numpy and pandas.
 We will also check whether gradient descent actually works by visualizing our predictons with actuals. 
 For that, we need matplotlib.
 
-```import numpy as np
+```
+import numpy as np
 import pandas as pd
 
 # import matplotlib for visualizations 
-import matplotlib.pyplot as plt```
+import matplotlib.pyplot as plt
+```
 
 Next, we need a dataset to work with. We will create an independant variable 'x' and a dependant variable 'y'.
 
-```# create an array 'x' with random values  
+```
+# create an array 'x' with random values  
 x = np.random.randn(10,1)
 
 # create a dependent array 'y' with slope 'x' and a random variable as constant 
-y = 5 * x + np.random.rand()```
+y = 5 * x + np.random.rand()
+```
 
 Next we need to create a function to calculate the gradients of the cost function at specific values of 'w' and 'b'. 
 We start with w and b at 0. 
