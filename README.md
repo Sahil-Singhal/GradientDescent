@@ -63,14 +63,38 @@ Higher the number of iterations, the more accurate our predictions, but it also 
 
 <code>
 # run iterations to reach the lowest cost or find the optimum solutions
-for epoch in range(500):
+warr = np.empty(0)
+barr = np.empty(0)
+carr = np.empty(0)
+
+iter = 10
+for epoch in range(iter):
     w, b = descend(x, y, w, b, 0.01)
     predicted_y = w * x + b
     cost = np.sum((predicted_y - y)**2) / (2 * x.shape[0])
+    carr = np.append(carr, cost)
+    warr = np.append(warr, w)
+    barr = np.append(barr, b)
     print(f"For iteration {epoch+1}, W was {round(w[0],4)}, B was {round(b[0],4)}, Cost was {round(cost,4)}")
+
+index_with_min_cost = pd.Series(carr).idxmin()
+optimal_w = warr[index_with_min_cost]
+optimal_b = barr[index_with_min_cost]
+
+predictions = optimal_w * x + optimal_b
+
+plt.plot(predictions, c='blue', label='predicted values')
+plt.plot(y, c='grey', label='actual values')
+plt.legend()
+plt.title(f"Comparison of Predictions and Actuals at {iter} iterations")
+plt.savefig(f"{iter} iterations", dpi=300)
+plt.show()
 </code>
 
 As expected, after 10 iterations, our predictions of 'y' are not even close to the actual 'y'.
 But with 100 iterations, it is very close. 
+
+![image](https://user-images.githubusercontent.com/113739146/209274417-9c74a4a8-605c-4932-8126-29f32fb75f14.png)
+
 
 And that's Gradient Descent !
