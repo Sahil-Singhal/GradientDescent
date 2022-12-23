@@ -13,13 +13,11 @@ We start by importing the necessary libraries - numpy and pandas.
 We will also check whether gradient descent actually works by visualizing our predictons with actuals. 
 For that, we need matplotlib.
 
-<code>
-import numpy as np
+<code>import numpy as np
 import pandas as pd
 
 # import matplotlib for visualizations 
-import matplotlib.pyplot as plt
-</code>
+import matplotlib.pyplot as plt</code>
 
 Next, we need a dataset to work with. We will create an independant variable 'x' and a dependant variable 'y'.
 
