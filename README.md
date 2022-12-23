@@ -13,25 +13,25 @@ We start by importing the necessary libraries - numpy and pandas.
 We will also check whether gradient descent actually works by visualizing our predictons with actuals. 
 For that, we need matplotlib.
 
-`import numpy as np
+```import numpy as np
 import pandas as pd
 
 # import matplotlib for visualizations 
-import matplotlib.pyplot as plt`
+import matplotlib.pyplot as plt```
 
 Next, we need a dataset to work with. We will create an independant variable 'x' and a dependant variable 'y'.
 
-`# create an array 'x' with random values  
+```# create an array 'x' with random values  
 x = np.random.randn(10,1)
 
 # create a dependent array 'y' with slope 'x' and a random variable as constant 
-y = 5 * x + np.random.rand()`
+y = 5 * x + np.random.rand()```
 
 Next we need to create a function to calculate the gradients of the cost function at specific values of 'w' and 'b'. 
 We start with w and b at 0. 
 Then calcuate the gradient and update 'w' and 'b'.
 
-`
+```
 # a straight line equation is represented as 'wx + b'
 # where 'w' is the slope or the factor by which 'y' changes wrt 'x'
 # let's initialize 'w' and 'b' as 0 to start with 
@@ -52,12 +52,12 @@ def descend(x, y, w, b, alpha):
     w = w - dldw * alpha / N
     b = b - dldb * alpha / N
     return w, b
-`
+```
 
 Finally, we repeat the process as many times as we want. I have shown results of 10 and 100 iterations. We can even run it a 1000 times.
 Higher the number of iterations, the more accurate our predictions, but it also takes longer to run and needs more processing power. 
 
-`
+```
 # run iterations to reach the lowest cost or find the optimum solutions
 warr = np.empty(0)
 barr = np.empty(0)
@@ -85,7 +85,7 @@ plt.legend()
 plt.title(f"Comparison of Predictions and Actuals at {iter} iterations")
 plt.savefig(f"{iter} iterations", dpi=300)
 plt.show()
-`
+```
 
 As expected, after 10 iterations, our predictions of 'y' are not even close to the actual 'y'.
 But with 100 iterations, it is very close. 
