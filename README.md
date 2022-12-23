@@ -94,7 +94,7 @@ plt.show()
 As expected, after 10 iterations, our predictions of 'y' are not even close to the actual 'y'.
 But with 100 iterations, it is very close. 
 
-![image](https://user-images.githubusercontent.com/113739146/209274417-9c74a4a8-605c-4932-8126-29f32fb75f14.png)
-
+![image](https://user-images.githubusercontent.com/113739146/209274587-950c9d29-a115-466d-9aac-42dcd1e0d835.png)
+![image](https://user-images.githubusercontent.com/113739146/209274600-f049a570-1f01-4e17-9da6-144196f8f935.png)
 
 And that's Gradient Descent !
