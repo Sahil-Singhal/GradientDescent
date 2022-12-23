@@ -37,7 +37,7 @@ warr = np.empty(0)
 barr = np.empty(0)
 carr = np.empty(0)
 
-iter = 10
+iter = 100
 for epoch in range(iter):
     w, b = descend(x, y, w, b, 0.01)
     predicted_y = w * x + b
@@ -57,7 +57,7 @@ plt.plot(predictions, c='blue', label='predicted values')
 plt.plot(y, c='grey', label='actual values')
 plt.legend()
 plt.title(f"Comparison of Predictions and Actuals at {iter} iterations")
-plt.savefig(f"{iter} iterations", dpi=300)
+plt.savefig(f"{iter} iterations")
 plt.show()
 
 # repeat the above with 100 iterations
