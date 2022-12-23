@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # create an array 'x' with random values  
-x = np.random.randn(10,1)
+x = np.random.randn(100,1)
 
 # create a dependent array 'y' with slope 'x' and a random variable as constant 
 y = 5 * x + np.random.rand()
@@ -38,13 +38,13 @@ barr = np.empty(0)
 carr = np.empty(0)
 
 iter = 10
-for epoch in range(10):
+for epoch in range(iter):
     w, b = descend(x, y, w, b, 0.01)
     predicted_y = w * x + b
     cost = np.sum((predicted_y - y)**2) / (2 * x.shape[0])
-    carr = carr.append(cost)
-    warr = warr.append(w)
-    barr = barr.append(b)
+    carr = np.append(carr, cost)
+    warr = np.append(warr, w)
+    barr = np.append(barr, b)
     print(f"For iteration {epoch+1}, W was {round(w[0],4)}, B was {round(b[0],4)}, Cost was {round(cost,4)}")
 
 index_with_min_cost = pd.Series(carr).idxmin()
@@ -53,9 +53,11 @@ optimal_b = barr[index_with_min_cost]
 
 predictions = optimal_w * x + optimal_b
 
-plt.plot(predictions, c='blue')
-plt.plot(y, c='grey')
+plt.plot(predictions, c='blue', label='predicted values')
+plt.plot(y, c='grey', label='actual values')
 plt.legend()
 plt.title(f"Comparison of Predictions and Actuals at {iter} iterations")
+plt.savefig(f"{iter} iterations", dpi=300)
+plt.show()
 
 # repeat the above with 100 iterations
