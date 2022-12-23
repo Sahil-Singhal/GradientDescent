@@ -59,5 +59,4 @@ plt.legend()
 plt.title(f"Comparison of Predictions and Actuals at {iter} iterations")
 plt.savefig(f"{iter} iterations", dpi=300)
 plt.show()
-
 # repeat the above with 100 iterations
