@@ -13,29 +13,29 @@ We start by importing the necessary libraries - numpy and pandas.
 We will also check whether gradient descent actually works by visualizing our predictons with actuals. 
 For that, we need matplotlib.
 
-<code>
+```python
 import numpy as np
 import pandas as pd
 
 # import matplotlib for visualizations 
 import matplotlib.pyplot as plt
-</code>
+```
 
 Next, we need a dataset to work with. We will create an independant variable 'x' and a dependant variable 'y'.
 
-<code>
+```python
 # create an array 'x' with random values  
 x = np.random.randn(10,1)
 
 # create a dependent array 'y' with slope 'x' and a random variable as constant 
 y = 5 * x + np.random.rand()
-</code>
+```
 
 Next we need to create a function to calculate the gradients of the cost function at specific values of 'w' and 'b'. 
 We start with w and b at 0. 
 Then calcuate the gradient and update 'w' and 'b'.
 
-<code>
+```python
 # a straight line equation is represented as 'wx + b'
 # where 'w' is the slope or the factor by which 'y' changes wrt 'x'
 # let's initialize 'w' and 'b' as 0 to start with 
@@ -56,21 +56,45 @@ def descend(x, y, w, b, alpha):
     w = w - dldw * alpha / N
     b = b - dldb * alpha / N
     return w, b
-</code>
+```
 
 Finally, we repeat the process as many times as we want. I have shown results of 10 and 100 iterations. We can even run it a 1000 times.
 Higher the number of iterations, the more accurate our predictions, but it also takes longer to run and needs more processing power. 
 
-<code>
+```python
 # run iterations to reach the lowest cost or find the optimum solutions
-for epoch in range(500):
+warr = np.empty(0)
+barr = np.empty(0)
+carr = np.empty(0)
+
+iter = 10
+for epoch in range(iter):
     w, b = descend(x, y, w, b, 0.01)
     predicted_y = w * x + b
     cost = np.sum((predicted_y - y)**2) / (2 * x.shape[0])
+    carr = np.append(carr, cost)
+    warr = np.append(warr, w)
+    barr = np.append(barr, b)
     print(f"For iteration {epoch+1}, W was {round(w[0],4)}, B was {round(b[0],4)}, Cost was {round(cost,4)}")
-</code>
+
+index_with_min_cost = pd.Series(carr).idxmin()
+optimal_w = warr[index_with_min_cost]
+optimal_b = barr[index_with_min_cost]
+
+predictions = optimal_w * x + optimal_b
+
+plt.plot(predictions, c='blue', label='predicted values')
+plt.plot(y, c='grey', label='actual values')
+plt.legend()
+plt.title(f"Comparison of Predictions and Actuals at {iter} iterations")
+plt.savefig(f"{iter} iterations", dpi=300)
+plt.show()
+```
 
 As expected, after 10 iterations, our predictions of 'y' are not even close to the actual 'y'.
 But with 100 iterations, it is very close. 
+
+![image](https://user-images.githubusercontent.com/113739146/209274587-950c9d29-a115-466d-9aac-42dcd1e0d835.png)
+![image](https://user-images.githubusercontent.com/113739146/209274600-f049a570-1f01-4e17-9da6-144196f8f935.png)
 
 And that's Gradient Descent !
