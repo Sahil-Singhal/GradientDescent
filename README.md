@@ -13,7 +13,7 @@ We start by importing the necessary libraries - numpy and pandas.
 We will also check whether gradient descent actually works by visualizing our predictons with actuals. 
 For that, we need matplotlib.
 
-```
+```python
 import numpy as np
 import pandas as pd
 
@@ -23,7 +23,7 @@ import matplotlib.pyplot as plt
 
 Next, we need a dataset to work with. We will create an independant variable 'x' and a dependant variable 'y'.
 
-```
+```python
 # create an array 'x' with random values  
 x = np.random.randn(10,1)
 
@@ -35,7 +35,7 @@ Next we need to create a function to calculate the gradients of the cost functio
 We start with w and b at 0. 
 Then calcuate the gradient and update 'w' and 'b'.
 
-```
+```python
 # a straight line equation is represented as 'wx + b'
 # where 'w' is the slope or the factor by which 'y' changes wrt 'x'
 # let's initialize 'w' and 'b' as 0 to start with 
@@ -61,7 +61,7 @@ def descend(x, y, w, b, alpha):
 Finally, we repeat the process as many times as we want. I have shown results of 10 and 100 iterations. We can even run it a 1000 times.
 Higher the number of iterations, the more accurate our predictions, but it also takes longer to run and needs more processing power. 
 
-```
+```python
 # run iterations to reach the lowest cost or find the optimum solutions
 warr = np.empty(0)
 barr = np.empty(0)
